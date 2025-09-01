@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-const routerTurnos = Router();
+const routerMascotas = Router();
 
 const createOne = (req, res, next) => {
     try {
@@ -38,10 +38,11 @@ const deleteOneById = (req, res, next) => {
     }
 };
 
-routerTurnos.post("/", createOne);
-routerTurnos.get("/", getAll);
-routerTurnos.get("/:id", getOneById);
-routerTurnos.put("/:id", updateOneById);
-routerTurnos.delete("/:id", deleteOneById);
+routerMascotas.post("/", createOne);
+routerMascotas.get("/", getAll);
+routerMascotas.get("/:id", getOneById);
+routerMascotas.put("/:id", updateOneById);
+routerMascotas.delete("/:id", deleteOneById);
 
-export default routerTurnos;
+
+export default routerMascotas;
