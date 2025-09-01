@@ -1,5 +1,6 @@
 import express from 'express';
 import router from './src/routes/index.router.js';
+import errorHandler from './src/middlewares/errorHandler.mid.js';
 
 const server = express();
 const PORT = 8080;
@@ -16,3 +17,5 @@ server.use(express.json());
 
 /* ROUTES */
 server.use('/', router);
+/* ERRORHANDLER */
+server.use(errorHandler);
