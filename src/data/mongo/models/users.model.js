@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { USER_ROLES } from "../../emuns/userRoles.emun.js";
+import { USER_ROLES } from "../../../emuns/userRoles.emun.js";
 
 const collection = "users";
 
@@ -45,4 +45,6 @@ const userSchema = new Schema({
     }
 });
 
-export default model(collection, userSchema);
+const User = model(collection, userSchema);
+
+export default User;
