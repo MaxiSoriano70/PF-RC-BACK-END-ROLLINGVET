@@ -41,7 +41,13 @@ const userSchema = new Schema({
     },
     fotoPerfil: {
         type: String,
-        default: "https://i.ibb.co/2kR9YQk/default-profile.png"
+        default: "https://i.ibb.co/2kR9YQk/default-profile.png",
+        validate: {
+            validator: function (v) {
+                return /^https?:\/\/.*\.(jpg|jpeg|png|gif|webp)$/i.test(v);
+            },
+            message: props => `La URL de la imagen no es válida.`
+        }
     }
 });
 
