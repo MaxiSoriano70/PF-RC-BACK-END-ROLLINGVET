@@ -1,10 +1,17 @@
 import { Router } from "express";
+import usersManager from "../../data/mongo/managers/users.manager.js";
 
 const routerUser = Router();
 
-const createOne = (req, res, next) => {
+const createOne = async (req, res, next) => {
     try {
-        
+        const data = req.body;
+        const response = await usersManager.create(data);
+        res.status(201).json({
+            data: response,
+            method: req.method,
+            url: req.url
+        });
     } catch (error) {
         next(error);
     }

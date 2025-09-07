@@ -1,11 +1,16 @@
+import 'dotenv/config.js';
 import express from 'express';
+import dbConnect from './src/helpers/dbConnect.helper.js';
 import router from './src/routes/index.router.js';
 import errorHandler from './src/middlewares/errorHandler.mid.js';
 
 const server = express();
 const PORT = 8080;
 
-const ready = () => console.log(`Server ready http://localhost:${PORT}/`);
+const ready = () => {
+    console.log(`Server ready http://localhost:${PORT}/`);
+    dbConnect();
+}
 
 server.listen(PORT, ready);
 
