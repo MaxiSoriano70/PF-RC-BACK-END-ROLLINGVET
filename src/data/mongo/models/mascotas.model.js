@@ -5,18 +5,11 @@ import { SEXO } from "../../../emuns/sexo.enum.js";
 const collection = "mascotas";
 
 const mascotaSchema = new Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true,
-        index: true
-    },
     urlImagen: {
         type: String,
         default: "https://i.ibb.co/2kR9YQk/default-profile.png",
         validate: {
             validator: function (v) {
-                // Debe terminar en .jpg, .jpeg, .png, .gif, .webp
                 return /^https?:\/\/.*\.(jpg|jpeg|png|gif|webp)$/i.test(v);
             },
             message: props => `La URL de la imagen no es válida.`

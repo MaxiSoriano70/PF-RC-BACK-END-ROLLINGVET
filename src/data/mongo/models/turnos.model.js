@@ -4,12 +4,6 @@ import { ESTADO_TURNO } from "../../../emuns/estadosTurnos.enum";
 const collection = "turnos";
 
 const turnoSchema = new Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true,
-        index: true
-    },
     veterinario: {
         type: String,
         required: true,

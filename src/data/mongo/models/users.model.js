@@ -4,12 +4,6 @@ import { USER_ROLES } from "../../../emuns/userRoles.emun.js";
 const collection = "users";
 
 const userSchema = new Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true,
-        index: true
-    },
     email: {
         type: String,
         required: true,
@@ -37,7 +31,15 @@ const userSchema = new Schema({
     },
     telefono: {
         type: String,
-        required: true
+        required: true,
+        minlength: 8,
+        maxlength: 15,
+        validate: {
+            validator: function (v) {
+                return /^\+?[0-9]{8,15}$/.test(v);
+            },
+            message: props => `El teléfono ${props.value} no es válido.`
+        }
     },
     fotoPerfil: {
         type: String,
