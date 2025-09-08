@@ -1,4 +1,4 @@
 export const SEXO = {
-    MACHO: "macho",
-    HEMBRA: "hembra"
+    MACHO: "MACHO",
+    HEMBRA: "HEMBRA"
 };

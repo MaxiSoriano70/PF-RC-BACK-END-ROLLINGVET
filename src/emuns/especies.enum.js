@@ -1,5 +1,5 @@
 export const ESPECIES = {
-    PERRO: "perro",
-    GATO: "gato",
+    CANINO: "CANINO",
+    FELINO: "FELINO",
     OTRO: "otro"
 };

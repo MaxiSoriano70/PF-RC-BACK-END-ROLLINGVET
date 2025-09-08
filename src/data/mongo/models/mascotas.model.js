@@ -83,7 +83,7 @@ const mascotaSchema = new Schema({
         minlength: 3,
         validate: {
             validator: function (v) {
-                return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(v);
+                return /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s.,]{3,}$/.test(v);
             },
             message: props => `El domicilio debe tener al menos 3 letras y solo puede contener letras y espacios.`
         }
