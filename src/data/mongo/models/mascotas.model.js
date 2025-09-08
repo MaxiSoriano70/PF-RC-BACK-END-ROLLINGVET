@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import { ESPECIES } from "../../../emuns/especies.enum.js";
 import { SEXO } from "../../../emuns/sexo.enum.js";
 
@@ -99,9 +99,9 @@ const mascotaSchema = new Schema({
         }
     },
     usuario: {
-        type: String,
-        required: true,
-        ref: "users"
+        type: Types.ObjectId,
+        ref: "users",
+        required: true
     }
 });
 

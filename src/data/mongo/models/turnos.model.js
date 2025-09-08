@@ -1,18 +1,18 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import { ESTADO_TURNO } from "../../../emuns/estadosTurnos.enum";
 
 const collection = "turnos";
 
 const turnoSchema = new Schema({
     veterinario: {
-        type: String,
-        required: true,
-        ref: "veterinarios"
+        type: Types.ObjectId,
+        ref: "users",
+        required: true
     },
     mascota: {
-        type: String,
-        required: true,
-        ref: "mascotas"
+        type: Types.ObjectId,
+        ref: "mascotas",
+        required: true
     },
     fecha: {
         type: Date,
