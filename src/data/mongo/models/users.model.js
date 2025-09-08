@@ -4,6 +4,33 @@ import { USER_ROLES } from "../../../emuns/userRoles.emun.js";
 const collection = "users";
 
 const userSchema = new Schema({
+    nombre: {
+        type: String,
+        required: true,
+        minlength: 2,
+        validate: {
+            validator: v => /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,}$/.test(v),
+            message: props => `El nombre debe tener al menos 2 letras y solo puede contener letras y espacios.`
+        }
+    },
+    apellido: {
+        type: String,
+        required: true,
+        minlength: 2,
+        validate: {
+            validator: v => /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,}$/.test(v),
+            message: props => `El apellido debe tener al menos 2 letras y solo puede contener letras y espacios.`
+        }
+    },
+    domicilio: {
+        type: String,
+        required: true,
+        minlength: 3,
+        validate: {
+            validator: v => /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s.,]{3,}$/.test(v),
+            message: props => `El domicilio debe tener al menos 3 caracteres y solo puede contener letras, números, espacios, puntos y comas.`
+        }
+    },
     email: {
         type: String,
         required: true,
@@ -18,9 +45,7 @@ const userSchema = new Schema({
         required: true,
         minlength: 6,
         validate: {
-            validator: function (v) {
-                return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/.test(v);
-            },
+            validator: v => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/.test(v),
             message: props => `La contraseña no cumple con los requisitos de seguridad.`
         }
     },
@@ -35,9 +60,7 @@ const userSchema = new Schema({
         minlength: 8,
         maxlength: 15,
         validate: {
-            validator: function (v) {
-                return /^\+?[0-9]{8,15}$/.test(v);
-            },
+            validator: v => /^\+?[0-9]{8,15}$/.test(v),
             message: props => `El teléfono ${props.value} no es válido.`
         }
     },
@@ -45,9 +68,7 @@ const userSchema = new Schema({
         type: String,
         default: "https://i.ibb.co/2kR9YQk/default-profile.png",
         validate: {
-            validator: function (v) {
-                return /^https?:\/\/.*\.(jpg|jpeg|png|gif|webp)$/i.test(v);
-            },
+            validator: v => /^https?:\/\/.*\.(jpg|jpeg|png|gif|webp)$/i.test(v),
             message: props => `La URL de la imagen no es válida.`
         }
     }
