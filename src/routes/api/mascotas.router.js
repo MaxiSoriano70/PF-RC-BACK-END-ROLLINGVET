@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import mascotasManager from '../../data/mongo/managers/mascotas.manager.js';
+import { mascotasManager } from '../../data/mongo/managers/manager.mongo.js';
 
 const routerMascotas = Router();
 

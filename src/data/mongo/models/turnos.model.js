@@ -1,5 +1,5 @@
 import { Schema, Types, model } from "mongoose";
-import { ESTADO_TURNO } from "../../../emuns/estadosTurnos.enum";
+import { ESTADO_TURNO } from "../../../emuns/estadosTurnos.enum.js";
 
 const collection = "turnos";
 
