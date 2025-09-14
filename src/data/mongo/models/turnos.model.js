@@ -12,7 +12,9 @@ const turnoSchema = new Schema({
     mascota: {
         type: Types.ObjectId,
         ref: "mascotas",
-        required: true
+        required: function () {
+            return this.estado === ESTADO_TURNO.RESERVADO;
+        }
     },
     fecha: {
         type: Date,
@@ -20,17 +22,18 @@ const turnoSchema = new Schema({
     },
     hora: {
         type: String,
-        required: true
+        required: true,
+        validate: {
+            validator: v => /^([01]\d|2[0-3]):(00|30)$/.test(v),
+            message: props => `La hora debe estar en formato HH:mm y en intervalos de 30 minutos.`
+        }
     },
     detalle: {
         type: String,
-        required: true,
         minlength: 3,
         validate: {
-            validator: function (v) {
-                return /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s.,]{3,}$/.test(v);
-            },
-            message: props => `El detalle debe tener al menos 3 caracteres y solo puede contener letras, espacios, números, puntos y comas.`
+            validator: v => !v || /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s.,]{3,}$/.test(v),
+            message: props => `El detalle solo puede contener letras, espacios, números, puntos y comas.`
         }
     },
     estado: {
@@ -41,5 +44,4 @@ const turnoSchema = new Schema({
 });
 
 const Turno = model(collection, turnoSchema);
-
 export default Turno;
