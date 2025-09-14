@@ -44,4 +44,5 @@ const turnoSchema = new Schema({
 });
 
 const Turno = model(collection, turnoSchema);
+
 export default Turno;
